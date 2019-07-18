@@ -1,0 +1,533 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FabricManagerApiNetCore</name>
+    </assembly>
+    <members>
+        <member name="P:FabricManagerApiNetCore.Contracts.FabricAddRequest.Sku">
+            <summary>
+            Gets or Sets Fabric SKU.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Contracts.FabricAddRequest.Description">
+            <summary>
+            Gets or Sets Fabric Description.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Contracts.FabricAddRequest.Category">
+            <summary>
+            Gets or Sets Product category.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Contracts.FabricAddRequest.Price">
+            <summary>
+            Gets or Sets Price of the fabric.
+            </summary>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Contracts.Po">
+            <summary>
+            PO class.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Contracts.Po.Id">
+            <summary>
+            Gets or Sets Unique identifier for fabric.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Contracts.Po.Sku">
+            <summary>
+            Gets or Sets Fabric SKU.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Contracts.Po.Qty">
+            <summary>
+            Gets or Sets Quantity to be added to inventory.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Contracts.Po.NewPrice">
+            <summary>
+            Gets or Sets New Price of the fabric.
+            </summary>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Contracts.So">
+            <summary>
+            Sales Order Class.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Contracts.So.Id">
+            <summary>
+            Gets or Sets Unique identifier for fabric.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Contracts.So.Qty">
+            <summary>
+            Gets or Sets Quantity to be removed from inventory.
+            </summary>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Controllers.FabricsController">
+            <summary>
+            Fabrics Controller
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.FabricsController.#ctor(FabricManagerApiNetCore.Services.IFabricService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FabricManagerApiNetCore.Controllers.FabricsController"/> class.
+            </summary>
+            <param name="fabricService">Fabric Service.</param>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.FabricsController.Get">
+            <summary>
+            Get List of Fabrics.
+            GET: api/Fabrics
+            </summary>
+            <returns>List of Fabrics.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.FabricsController.Get(System.Int32)">
+            <summary>
+            Get a single Fabric by ID.
+            GET: api/Fabrics/5
+            </summary>
+            <param name="id">Fabric Id.</param>
+            <returns>A Single Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.FabricsController.Post(FabricManagerApiNetCore.Contracts.FabricAddRequest)">
+            <summary>
+            Add New fabric.
+            POST: api/Fabrics
+            </summary>
+            <param name="fabric">Fabric Model.</param>
+            <returns>Added Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.FabricsController.Put(FabricManagerApiNetCore.Models.Fabric)">
+            <summary>
+            Update Fabric.
+            PUT: api/Fabrics/
+            </summary>
+            <param name="fabric">Fabric Model.</param>
+            <returns>Updated Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.FabricsController.Delete(System.Int32)">
+            <summary>
+            Delete Fabric by Id.
+            DELETE: api/Fabrics/5
+            </summary>
+            <param name="id">Fabric Id.</param>
+            <returns>True/False</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.FabricsController.Patch(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{FabricManagerApiNetCore.Models.Fabric})">
+            <summary>
+            Update Fabric.
+            PATCH: api/Fabrics/5
+            </summary>
+            <param name="fabric">Fabric Model.</param>
+            <returns>Updated Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.FabricsController.Search(System.String)">
+            <summary>
+            Search Fabrics.
+            POST: api/fabrics/search/"keyword"
+            </summary>
+            <param name="keyWord"></param>
+            <returns>List of Fabrics that matches key word.</returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Controllers.InventoryController">
+            <summary>
+            Inventory Controller Class.
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.InventoryController.#ctor(FabricManagerApiNetCore.Services.IInventoryService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FabricManagerApiNetCore.Controllers.InventoryController"/> class.
+            </summary>
+            <param name="inventoryService">Inventory Service.</param>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.InventoryController.GetLowInventory">
+            <summary>
+            Get low Inventory levels.
+            </summary>
+            <returns>List of fabrics to reorder</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.InventoryController.Po(FabricManagerApiNetCore.Contracts.Po)">
+            <summary>
+            Process a PO to be posted to Inventoy.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Controllers.InventoryController.So(FabricManagerApiNetCore.Contracts.So)">
+            <summary>
+            Process a SO and remove Inventory.
+            </summary>
+            <param name="so"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Models.Fabric">
+            <summary>
+            Fabric Class Model.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Models.Fabric.Id">
+            <summary>
+            Gets or Sets Unique identifier for fabric.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Models.Fabric.Sku">
+            <summary>
+            Gets or Sets Fabric SKU.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Models.Fabric.Description">
+            <summary>
+            Gets or Sets Fabric Description.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Models.Fabric.Price">
+            <summary>
+            Gets or Sets Price of the fabric.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Models.Fabric.Active">
+            <summary>
+            Gets or Sets Active flag for fabric.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Models.Fabric.Category">
+            <summary>
+            Gets or Sets Product category.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Models.Fabric.ImgUrl">
+            <summary>
+            Gets or Sets Fabric imgUrl (auto generated on creation).
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Models.Fabric.Inventory">
+            <summary>
+            Gets or Sets Amount of fabric currently available.
+            </summary>
+        </member>
+        <member name="P:FabricManagerApiNetCore.Models.ListOfFabrics.Fabrics">
+            <summary>
+            Get or Set List Of Fabrics
+            </summary>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Repositories.DbJsonContext">
+            <summary>
+            DB Json File Rea/Write.
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.DbJsonContext.ReadFabricsDb">
+            <summary>
+            Read Json DB file.
+            </summary>
+            <returns>Json DB as ListOfFabrics obeject.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.DbJsonContext.WriteFabricsDb(FabricManagerApiNetCore.Models.ListOfFabrics)">
+            <summary>
+            Write Json DB file for Data Persistance.
+            </summary>
+            <param name="fabrics"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Repositories.FabricRepository">
+            <summary>
+            Fabric Repository Class.
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.FabricRepository.#ctor(FabricManagerApiNetCore.Repositories.DbJsonContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FabricManagerApiNetCore.Repositories.InventoryRepository"/> class.
+            </summary>
+            <param name="context">Context.</param>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.FabricRepository.GetFabric(System.Int32)">
+            <summary>
+            Get a Fabric by Id.
+            </summary>
+            <param name="Id">Fabric Id.</param>
+            <returns>Singel Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.FabricRepository.GetListOfFabrics">
+            <summary>
+            Get List of Fabrics.
+            </summary>
+            <returns>List of Fabrics.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.FabricRepository.AddFabric(FabricManagerApiNetCore.Contracts.FabricAddRequest)">
+            <summary>
+            Add a New Fabric.
+            </summary>
+            <param name="fabric">Fabric object to add.</param>
+            <returns>New Fabric Added.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.FabricRepository.UpdateFabric(FabricManagerApiNetCore.Models.Fabric)">
+            <summary>
+            Update Fabric.
+            </summary>
+            <param name="fabric">Fabric object to update.</param>
+            <returns>Updated Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.FabricRepository.DeleteFabric(System.Int32)">
+            <summary>
+            Delete Fabric by Id.
+            </summary>
+            <param name="id">Fabric Id.</param>
+            <returns>True/False.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.FabricRepository.SearchFabric(System.String)">
+            <summary>
+            Search Fabric by key word.
+            </summary>
+            <param name="keyWord">Key Word.</param>
+            <returns>List of Fabrics</returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Repositories.IFabricRepository">
+            <summary>
+            Fabric Repository Interfacce.
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.IFabricRepository.GetFabric(System.Int32)">
+            <summary>
+            Get a Fabric by Id.
+            </summary>
+            <param name="id">Fabric Id.</param>
+            <returns>Singel Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.IFabricRepository.GetListOfFabrics">
+            <summary>
+            Get List of Fabrics.
+            </summary>
+            <returns>List of Fabrics.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.IFabricRepository.AddFabric(FabricManagerApiNetCore.Contracts.FabricAddRequest)">
+            <summary>
+            Add a New Fabric.
+            </summary>
+            <param name="fabric">Fabric object to add.</param>
+            <returns>New Fabric Added.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.IFabricRepository.UpdateFabric(FabricManagerApiNetCore.Models.Fabric)">
+            <summary>
+            Update Fabric.
+            </summary>
+            <param name="fabric">Fabric object to update.</param>
+            <returns>Updated Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.IFabricRepository.DeleteFabric(System.Int32)">
+            <summary>
+            Delete Fabric by Id.
+            </summary>
+            <param name="id">Fabric Id.</param>
+            <returns>True/False.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.IFabricRepository.SearchFabric(System.String)">
+            <summary>
+            Search Fabric by key word.
+            </summary>
+            <param name="keyWord">Key Word.</param>
+            <returns>List of Fabrics</returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Repositories.IInventoryRepository">
+            <summary>
+            Inventory Repository Interface.
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.IInventoryRepository.InventoryLevels">
+            <summary>
+            Get inventory levels for fabrics.
+            </summary>
+            <returns>list of Fabrics to be reorder.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.IInventoryRepository.PurchaseOrder(FabricManagerApiNetCore.Contracts.Po)">
+            <summary>
+            Process PO and change inventory levels.
+            </summary>
+            <param name="po">Purchase Order</param>
+            <returns>True/False when processed.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.IInventoryRepository.SalesOrder(FabricManagerApiNetCore.Contracts.So)">
+            <summary>
+            Process a SO and change inventory levels.
+            </summary>
+            <returns>True/False when processed.</returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Repositories.InventoryRepository">
+            <summary>
+            Inventory Repository Class.
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.InventoryRepository.#ctor(FabricManagerApiNetCore.Repositories.DbJsonContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FabricManagerApiNetCore.Repositories.InventoryRepository"/> class.
+            </summary>
+            <param name="context">Context.</param>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.InventoryRepository.InventoryLevels">
+            <summary>
+            Get inventory levels for fabrics.
+            </summary>
+            <returns>list of Fabrics to be reorder.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.InventoryRepository.PurchaseOrder(FabricManagerApiNetCore.Contracts.Po)">
+            <summary>
+            Process PO and change inventory levels.
+            </summary>
+            <returns>True/False when processed.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Repositories.InventoryRepository.SalesOrder(FabricManagerApiNetCore.Contracts.So)">
+            <summary>
+            Process a SO and change inventory levels.
+            </summary>
+            <returns>True/False when processed.</returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Services.FabricsService">
+            <summary>
+            Fabric Service Class
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.FabricsService.#ctor(FabricManagerApiNetCore.Repositories.IFabricRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FabricManagerApiNetCore.Services.FabricsService"/> class.
+            </summary>
+            <param name="fabricService">Fabric Service.</param>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.FabricsService.GetFabric(System.Int32)">
+            <summary>
+            Get a Fabric by Id.
+            </summary>
+            <param name="Id">Fabric Id.</param>
+            <returns>Singel Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.FabricsService.GetListOfFabrics">
+            <summary>
+            Get List of Fabrics.
+            </summary>
+            <returns>List of Fabrics.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.FabricsService.AddFabric(FabricManagerApiNetCore.Contracts.FabricAddRequest)">
+            <summary>
+            Add a New Fabric.
+            </summary>
+            <param name="fabric">Fabric object to add.</param>
+            <returns>New Fabric Added.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.FabricsService.UpdateFabric(FabricManagerApiNetCore.Models.Fabric)">
+            <summary>
+            Update Fabric.
+            </summary>
+            <param name="fabric">Fabric object to update.</param>
+            <returns>Updated Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.FabricsService.DeleteFabric(System.Int32)">
+            <summary>
+            Delete Fabric by Id.
+            </summary>
+            <param name="Id">Fabric Id.</param>
+            <returns>True/False.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.FabricsService.SearchFabric(System.String)">
+            <summary>
+            Search Fabric by key word.
+            </summary>
+            <param name="keyWord">Key Word.</param>
+            <returns>List of Fabrics</returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Services.IFabricService">
+            <summary>
+            Fabric Service Interface.
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.IFabricService.GetFabric(System.Int32)">
+            <summary>
+            Get a Fabric by Id.
+            </summary>
+            <param name="Id">Fabric Id.</param>
+            <returns>Singel Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.IFabricService.GetListOfFabrics">
+            <summary>
+            Get List of Fabrics.
+            </summary>
+            <returns>List of Fabrics.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.IFabricService.AddFabric(FabricManagerApiNetCore.Contracts.FabricAddRequest)">
+            <summary>
+            Add a New Fabric.
+            </summary>
+            <param name="fabric">Fabric object to add.</param>
+            <returns>New Fabric Added.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.IFabricService.UpdateFabric(FabricManagerApiNetCore.Models.Fabric)">
+            <summary>
+            Update Fabric.
+            </summary>
+            <param name="fabric">Fabric object to update.</param>
+            <returns>Updated Fabric.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.IFabricService.DeleteFabric(System.Int32)">
+            <summary>
+            Delete Fabric by Id.
+            </summary>
+            <param name="Id">Fabric Id.</param>
+            <returns>True/False.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.IFabricService.SearchFabric(System.String)">
+            <summary>
+            Search Fabric by key word.
+            </summary>
+            <param name="keyWord">Key Word.</param>
+            <returns>List of Fabrics</returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Services.IInventoryService">
+            <summary>
+            Inventory Service Interface.
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.IInventoryService.InventoryLevels">
+            <summary>
+            Get inventory levels for fabrics.
+            </summary>
+            <returns>list of Fabrics to be reorder.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.IInventoryService.PurchaseOrder(FabricManagerApiNetCore.Contracts.Po)">
+            <summary>
+            Process PO and change inventory levels.
+            </summary>
+            <returns>True/False when processed.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.IInventoryService.SalesOrder(FabricManagerApiNetCore.Contracts.So)">
+            <summary>
+            Process a SO and change inventory levels.
+            </summary>
+            <returns>True/False when processed.</returns>
+        </member>
+        <member name="T:FabricManagerApiNetCore.Services.InventoryService">
+            <summary>
+            Inventory Service Class.
+            </summary>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.InventoryService.#ctor(FabricManagerApiNetCore.Repositories.IInventoryRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FabricManagerApiNetCore.Services.InventoryService"/> class.
+            </summary>
+            <param name="inventoryRepository">Inventory Repository.</param>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.InventoryService.InventoryLevels">
+            <summary>
+            Get inventory levels for fabrics.
+            </summary>
+            <returns>list of Fabrics to be reorder.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.InventoryService.PurchaseOrder(FabricManagerApiNetCore.Contracts.Po)">
+            <summary>
+            Process PO and change inventory levels.
+            </summary>
+            <returns>True/False when processed.</returns>
+        </member>
+        <member name="M:FabricManagerApiNetCore.Services.InventoryService.SalesOrder(FabricManagerApiNetCore.Contracts.So)">
+            <summary>
+            Process a SO and change inventory levels.
+            </summary>
+            <returns>True/False when processed.</returns>
+        </member>
+    </members>
+</doc>
